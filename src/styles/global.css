@@ -1,0 +1,37 @@
+/* .ant-upload-wrapper.ant-upload-picture-card-wrapper
+  .ant-upload.ant-upload-select {
+  width: 190px !important;
+  height: 140px !important;
+}
+
+img {
+  max-width: max-content;
+} */
+.ant-table-cell {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  padding: 2px !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+}
+.ant-switch-checked {
+  background-color: #1890ff !important;
+  justify-content: flex-start !important;
+  align-items: start !important;
+}
+
+.ant-table-column-sorters {
+  float: left;}
+.ant-pro-table-list-toolbar{
+  float: left;
+}
+.ant-pro-table-list-toolbar-setting-items{
+  display: none;
+}
+.ant-pro-table-list-toolbar-container{
+  display: flex;
+  justify-content: space-between;
+}
+.ant-input-affix-wrapper{
+  float: right;
+}
