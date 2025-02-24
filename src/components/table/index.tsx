@@ -6,13 +6,16 @@ import ProTable, {
 // import { RemoveModal } from "components/modal";
 import React, { useRef, useState } from "react";
 import { ActionComponentProps, RemoveModelConfig } from "../../utils/types";
+import { StopPagination} from "../stop_pagination";
+import { DeleteButton, DetailButton, EditButton} from "../buttons/action";
+import { RemoveModal } from "../modal";
 // import { DeleteButton, DetailButton, EditButton, StopPagination } from "..";
 
 type Props<T> = ProTableProps<T, any, any> & {
   CreateComponent?: React.FC<ActionComponentProps<T>>;
-  // DetailComponent?: React.FC<ActionComponentProps<T>>;
-  // UpdateComponent?: React.FC<ActionComponentProps<T>>;
-  // RemoveComponent?: React.FC<ActionComponentProps<T>>;
+  DetailComponent?: React.FC<ActionComponentProps<T>>;
+  UpdateComponent?: React.FC<ActionComponentProps<T>>;
+  RemoveComponent?: React.FC<ActionComponentProps<T>>;
   columns?: ProColumns<T, any>[];
   hideAction?: boolean;
   total?: number;
@@ -20,7 +23,7 @@ type Props<T> = ProTableProps<T, any, any> & {
   details?: T[];
   create?: boolean;
   customActions?: (value: T) => React.ReactNode;
-  // RemoveModelConfig?: RemoveModelConfig<T>;
+  RemoveModelConfig?: RemoveModelConfig<T>;
   onPaginationChange?: (page: number, pageSize: number) => void;
   hideEditButton?: (record: any) => boolean;
   hideInActiveButton?: (record: any) => boolean;
@@ -43,9 +46,9 @@ type Props<T> = ProTableProps<T, any, any> & {
 
 export const ITable = <T extends {}>({
   CreateComponent,
-  // UpdateComponent,
-  // DetailComponent,
-  // RemoveComponent,
+  UpdateComponent,
+  DetailComponent,
+  RemoveComponent,
   hidePagination,
   create,
   setCreate,
@@ -58,7 +61,7 @@ export const ITable = <T extends {}>({
   customActions,
   scroll,
   form,
-  // RemoveModelConfig,
+  RemoveModelConfig,
   onPaginationChange,
   hideEditButton,
   showDetailButton,
@@ -163,48 +166,48 @@ export const ITable = <T extends {}>({
             dataIndex: "action",
             align: "right",
             width: "auto",
-            // render: (_, record) => {
-            //   return (
-            //     <StopPagination>
-            //       <div className="gap-2 flex items-center justify-end mr-3">
-            //         {DetailComponent && (
-            //           <DetailButton
-            //             style={{
-            //               opacity: showDetailButton?.(record) ? 0.5 : 1,
-            //               cursor: showDetailButton?.(record)
-            //                 ? "not-allowed"
-            //                 : "pointer",
-            //             }}
-            //             onClick={() => {
-            //               showDetailButton?.(record) ? null : setDetail(record);
-            //             }}
-            //           />
-            //         )}
-            //         {UpdateComponent && (
-            //           <EditButton
-            //             style={{
-            //               opacity: hideEditButton?.(record) ? 0.5 : 1,
-            //               cursor: hideEditButton?.(record)
-            //                 ? "not-allowed"
-            //                 : "pointer",
-            //             }}
-            //             onClick={() => {
-            //               hideEditButton?.(record) ? null : setUpdate(record);
-            //             }}
-            //           />
-            //         )}
-            //         {(RemoveModelConfig || RemoveComponent) && (
-            //           <DeleteButton
-            //             onClick={() => {
-            //               setRemove(record);
-            //             }}
-            //           />
-            //         )}
-            //         {customActions && customActions(record)}
-            //       </div>
-            //     </StopPagination>
-            //   );
-            // },
+            render: (_, record) => {
+              return (
+                <StopPagination>
+                  <div className="gap-2 flex items-center justify-end mr-3">
+                    {DetailComponent && (
+                      <DetailButton
+                        style={{
+                          opacity: showDetailButton?.(record) ? 0.5 : 1,
+                          cursor: showDetailButton?.(record)
+                            ? "not-allowed"
+                            : "pointer",
+                        }}
+                        onClick={() => {
+                          showDetailButton?.(record) ? null : setDetail(record);
+                        }}
+                      />
+                    )}
+                    {UpdateComponent && (
+                      <EditButton
+                        style={{
+                          opacity: hideEditButton?.(record) ? 0.5 : 1,
+                          cursor: hideEditButton?.(record)
+                            ? "not-allowed"
+                            : "pointer",
+                        }}
+                        onClick={() => {
+                          hideEditButton?.(record) ? null : setUpdate(record);
+                        }}
+                      />
+                    )}
+                    {(RemoveModelConfig || RemoveComponent) && (
+                      <DeleteButton
+                        onClick={() => {
+                          setRemove(record);
+                        }}
+                      />
+                    )}
+                    {customActions && customActions(record)}
+                  </div>
+                </StopPagination>
+              );
+            },
           },
         ]}
       />
@@ -225,7 +228,7 @@ export const ITable = <T extends {}>({
         />
       )}
 
-      {/* {UpdateComponent && (
+      {UpdateComponent && (
         <UpdateComponent
           open={!!update}
           onCancel={() => setUpdate(undefined)}
@@ -240,16 +243,16 @@ export const ITable = <T extends {}>({
           }}
           details={details}
         />
-      )} */}
-      {/* {DetailComponent && (
+      )}
+      {DetailComponent && (
         <DetailComponent
           open={!!detail}
           detail={detail}
           onCancel={() => setDetail(undefined)}
           details={details}
         />
-      )} */}
-      {/* {RemoveComponent && (
+      )}
+      {RemoveComponent && (
         <RemoveComponent
           open={!!remove}
           onCancel={() => setRemove(undefined)}
@@ -264,8 +267,8 @@ export const ITable = <T extends {}>({
           }}
           details={details}
         />
-      )} */}
-      {/* {RemoveModelConfig && (
+      )} 
+       {RemoveModelConfig && (
         <RemoveModal
           {...RemoveModelConfig.config(remove as any)}
           open={!!remove}
@@ -276,12 +279,12 @@ export const ITable = <T extends {}>({
               pageSize: form?.pageSize || pageData.pageSize,
             });
             setRemove(undefined);
-          }} */}
-          {/* onCancel={() => setRemove(undefined)}
+          }} 
+           onCancel={() => setRemove(undefined)}
           onRequest={RemoveModelConfig.action}
           remove={true}
         />
-      )} */}
+      )}
     </>
   );
-};
+}; 
