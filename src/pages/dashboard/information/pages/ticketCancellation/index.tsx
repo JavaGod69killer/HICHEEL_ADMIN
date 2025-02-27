@@ -1,17 +1,14 @@
 import React, { useState } from "react";
-import { DatePicker, Segmented } from "antd";
-import ProTable from "@ant-design/pro-table";
-import { FEE_SAMPLES, FEE_COLUMNS } from "./additional-fee-settings";
-import { CAPACITY_COLUMNS, CAPACITY_SAMPLES } from "./columns";
-import { ACCOUNT_COLUMNS, ACCOUNT_SAMPLES } from "./account";
+import { DatePicker, Segmented, Input, Button } from "antd";
+import { SearchOutlined, RedoOutlined, PlusOutlined } from "@ant-design/icons";
+
 import {
-  TICKET_CANCELLATION_COLUMNS,
   TICKET_CANCELLATION_SAMPLES,
-} from "./ticket-cancellation";
-import { TRANSACTION_COLUMNS, TRANSACTION_SAMPLES } from "./transaction";
+  TICKET_CANCELLATION_COLUMNS,
+} from "../../ticket-cancellation";
 import { PageCard } from "components/card";
 import InitTableHeader from "components/table-header";
-import { ITable } from "../../../components/table";
+import { ITable } from "../../../../../components/table";
 import { UpdateService } from "./actions/update";
 import { CreateService } from "./actions/create";
 import { DetailService } from "./actions/detail";
@@ -30,56 +27,34 @@ const Two_Segment_Option = [
 
 const { RangePicker } = DatePicker;
 
-const getTableConfig = (segment, subSegment) => {
-  if (segment === "customer-accounting") {
-    if (subSegment === "transaction") {
-      return { data: TRANSACTION_SAMPLES, columns: TRANSACTION_COLUMNS };
-    }
-    return { data: ACCOUNT_SAMPLES, columns: ACCOUNT_COLUMNS };
-  }
-
-  switch (segment) {
-    case "customer-company":
-      return { data: CAPACITY_SAMPLES, columns: CAPACITY_COLUMNS };
-    case "additional-fee-settings":
-      return { data: FEE_SAMPLES, columns: FEE_COLUMNS };
-    case "ticket-cancellation":
-      return {
-        data: TICKET_CANCELLATION_SAMPLES,
-        columns: TICKET_CANCELLATION_COLUMNS,
-      };
-    default:
-      return { data: [], columns: [] };
-  }
-};
-
 const Information: React.FC = () => {
   const [segment, setSegment] = useState(Segment_Option[0].value);
-  const [subSegment, setSubSegment] = useState("account");
+  const [twoSegment, setTwoSegment] = useState(Two_Segment_Option[0].value);
   const [searchText, setSearchText] = useState("");
   const [form, setForm] = useState({ pageSize: 10 });
 
-  const { data, columns } = getTableConfig(segment, subSegment);
+  const handleSearch = (value: string) => {
+    setSearchText(value);
+    // Implement search logic if necessary
+  };
+
+  const handleRefresh = () => {
+    setSearchText("");
+    // Implement refresh logic if necessary
+  };
+
+  const handleAddNew = () => {
+    console.log("Add new item");
+    // Implement add new logic
+  };
 
   return (
     <>
       <PageCard xR>
         <div className="mt-10">
+          {/* Show ProTable only if segment is "customer-company" */}
+
           <div className="mt-[32px] mb-[48px] mx-[24px]">
-            <Segmented
-              options={Segment_Option}
-              value={segment}
-              onChange={setSegment}
-            />
-            {segment === "customer-accounting" && (
-              <div className="mt-4">
-                <Segmented
-                  options={Two_Segment_Option}
-                  value={subSegment}
-                  onChange={setSubSegment}
-                />
-              </div>
-            )}
             <div className="px-2 pb-0">
               <div>
                 <InitTableHeader
@@ -89,20 +64,15 @@ const Information: React.FC = () => {
                   hideDownload={true}
                 />
               </div>
-              <div className="mt-4">
-                <span className="text-gray-600">
-                  Нийт бичлэг: {data.length}
-                </span>
-              </div>
             </div>
             <ITable
-              dataSource={data}
-              columns={columns}
+              dataSource={TICKET_CANCELLATION_SAMPLES}
+              columns={TICKET_CANCELLATION_COLUMNS}
               search={false}
               rowKey="documentNumber"
               form={form}
-              pagination={{ pageSize: 10, total: data.length }}
-              setForm={setForm}
+              pagination={{ pageSize: 10 }}
+              setForm={setForm} // Pass form and setForm
               UpdateComponent={UpdateService}
               CreateComponent={CreateService}
               DetailComponent={DetailService}
@@ -122,5 +92,3 @@ const Information: React.FC = () => {
 };
 
 export default Information;
-
-// Let me know if this works how you want or if you’d like any adjustments! 🚀

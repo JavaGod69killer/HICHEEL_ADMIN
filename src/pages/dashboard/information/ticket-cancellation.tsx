@@ -110,24 +110,24 @@ export const TICKET_CANCELLATION_COLUMNS = [
       );
     },
   },
-  {
-    title: "Үйлдэл",
-    key: "operation",
-    fixed: "right",
-    width: 70,
-    render: (_: any, record: TicketCancellationData) => (
-      <Space>
-        <Button
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-          icon={<DeleteOutlined />}
-          danger
-          onClick={() => handleDelete(record)}
-        />{" "}
-      </Space>
-    ),
-  },
+  // {
+  //   title: "Үйлдэл",
+  //   key: "operation",
+  //   fixed: "right",
+  //   width: 70,
+  //   render: (_: any, record: TicketCancellationData) => (
+  //     <Space>
+  //       <Button
+  //         style={{
+  //           display: "flex",
+  //           justifyContent: "center",
+  //           alignItems: "center",
+  //         }}
+  //         icon={<DeleteOutlined />}
+  //         danger
+  //         onClick={() => handleDelete(record)}
+  //       />{" "}
+  //     </Space>
+  //   ),
+  // },
 ];

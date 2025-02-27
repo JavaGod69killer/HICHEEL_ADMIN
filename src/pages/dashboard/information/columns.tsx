@@ -83,31 +83,31 @@ export const CAPACITY_COLUMNS = [
     sorter: (a: CapacityData, b: CapacityData) =>
       Number(a.contactNumber) - Number(b.contactNumber),
   },
-  {
-    title: "Үйлдэл",
-    key: "operation",
-    fixed: "right",
-    width: 160,
-    render: (_: any, record: CapacityData) => (
-      <Space>
-        <Button
-          icon={<EyeOutlined />}
-          onClick={() => handleView(record)}
-          style={{ marginRight: "8px" }}
-        />
-        <Button
-          icon={<EditOutlined />}
-          onClick={() => handleEdit(record)}
-          style={{ marginRight: "8px" }}
-        />
-        <Button
-          icon={<DeleteOutlined />}
-          danger
-          onClick={() => handleDelete(record)}
-        />
-      </Space>
-    ),
-  },
+  // {
+  //   title: "Үйлдэл",
+  //   key: "operation",
+  //   fixed: "right",
+  //   width: 160,
+  //   // render: (_: any, record: CapacityData) => (
+  //   //   <Space>
+  //   //     <Button
+  //   //       icon={<EyeOutlined />}
+  //   //       onClick={() => handleView(record)}
+  //   //       style={{ marginRight: "8px" }}
+  //   //     />
+  //   //     <Button
+  //   //       icon={<EditOutlined />}
+  //   //       onClick={() => handleEdit(record)}
+  //   //       style={{ marginRight: "8px" }}
+  //   //     />
+  //   //     <Button
+  //   //       icon={<DeleteOutlined />}
+  //   //       danger
+  //   //       onClick={() => handleDelete(record)}
+  //   //     />
+  //   //   </Space>
+  //   // ),
+  // },
 ];
 // import React, { useState, useEffect } from "react";
 // import { Button, Space, Switch } from "antd";

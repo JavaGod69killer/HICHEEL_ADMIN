@@ -116,20 +116,12 @@ const InitTableHeader: React.FC<TableHeaderProps> = ({
             (downloadList ? (
               <ExportButton
                 hidden={!fileName}
-                onClick={() => {
-                  exportFromList([`${fileName}`], downloadList);
-                }}
+              
               />
             ) : (
               <ExportButton
                 hidden={!fileName}
-                onClick={() => {
-                  exportFromTable(
-                    [`${fileName}`],
-                    window.document.getElementById(`${tableID}`) as HTMLElement,
-                    window
-                  );
-                }}
+           
               />
             ))}
 

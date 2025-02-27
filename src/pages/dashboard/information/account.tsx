@@ -80,33 +80,33 @@ export const ACCOUNT_COLUMNS = [
       Number(a.closingBalance.replace(/\D/g, "")) -
       Number(b.closingBalance.replace(/\D/g, "")),
   },
-  {
-    title: "Үйлдэл",
-    key: "operation",
-    fixed: "right",
-    width: 150,
-    render: (_: any, record: CapacityData) => (
-      <Space>
-        <Button
-          icon={<EyeOutlined />}
-          onClick={() => handleView(record)}
-          style={{
-            marginRight: "8px",
-          }}
-        />
-        <Button
-          icon={<EditOutlined />}
-          onClick={() => handleEdit(record)}
-          style={{
-            marginRight: "8px",
-          }}
-        />
-        <Button
-          icon={<DeleteOutlined />}
-          danger
-          onClick={() => handleDelete(record)}
-        />
-      </Space>
-    ),
-  },
+  // {
+  //   title: "Үйлдэл",
+  //   key: "operation",
+  //   fixed: "right",
+  //   width: 150,
+  //   render: (_: any, record: CapacityData) => (
+  //     <Space>
+  //       <Button
+  //         icon={<EyeOutlined />}
+  //         onClick={() => handleView(record)}
+  //         style={{
+  //           marginRight: "8px",
+  //         }}
+  //       />
+  //       <Button
+  //         icon={<EditOutlined />}
+  //         onClick={() => handleEdit(record)}
+  //         style={{
+  //           marginRight: "8px",
+  //         }}
+  //       />
+  //       <Button
+  //         icon={<DeleteOutlined />}
+  //         danger
+  //         onClick={() => handleDelete(record)}
+  //       />
+  //     </Space>
+  //   ),
+  // },
 ];

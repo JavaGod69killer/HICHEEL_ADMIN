@@ -67,21 +67,21 @@ export const FEE_COLUMNS = [
     sorter: (a: FeeData, b: FeeData) =>
       Number(a.feeAmount) - Number(b.feeAmount),
   },
-  {
-    title: "Үйлдэл",
-    key: "operation",
-    fixed: "right",
-    width: 160,
-    render: (_: any, record: FeeData) => (
-      <Space>
-        <Button icon={<EyeOutlined />} onClick={() => handleView(record)} />
-        <Button icon={<EditOutlined />} onClick={() => handleEdit(record)} />
-        <Button
-          icon={<DeleteOutlined />}
-          danger
-          onClick={() => handleDelete(record)}
-        />
-      </Space>
-    ),
-  },
+  // {
+  //   title: "Үйлдэл",
+  //   key: "operation",
+  //   fixed: "right",
+  //   width: 160,
+  //   render: (_: any, record: FeeData) => (
+  //     <Space>
+  //       <Button icon={<EyeOutlined />} onClick={() => handleView(record)} />
+  //       <Button icon={<EditOutlined />} onClick={() => handleEdit(record)} />
+  //       <Button
+  //         icon={<DeleteOutlined />}
+  //         danger
+  //         onClick={() => handleDelete(record)}
+  //       />
+  //     </Space>
+  //   ),
+  // },
 ];

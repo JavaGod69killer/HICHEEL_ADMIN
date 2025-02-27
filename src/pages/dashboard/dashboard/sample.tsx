@@ -35,7 +35,7 @@
 //   { title: "Суларсан", dataIndex: "released" },
 //   { title: "Ачилт хийсэг", dataIndex: "loaded" },
 // ];
-import React from "react";
+import React, { Children } from "react";
 import { Button, Space, Switch } from "antd";
 import { EditOutlined, DeleteOutlined, EyeOutlined } from "@ant-design/icons";
 
@@ -93,32 +93,45 @@ const handleView = (record: CapacityData) => {
 };
 
 export const CAPACITY_COLUMNS = [
-  { title: "Дөхөлт огноо", dataIndex: "arrivalDate", width: 150 },
-  { title: "Орох хил", dataIndex: "arrivalBorder", width: 120 },
-  { title: "Импорт", dataIndex: "isImport", width: 120 },
-  { title: "Чингэлэгийн дугаар", dataIndex: "containerNumber", width: 180 },
-  { title: "Багтаамж", dataIndex: "capacity", width: 120 },
-  { title: "Зуучийн нэр", dataIndex: "brokerName", width: 150 },
-  { title: "Ачилт", dataIndex: "isLoaded", width: 120 },
-  { title: "Борлуулалт", dataIndex: "isSold", width: 120 },
-  { title: "Үнэ", dataIndex: "price", width: 120 },
-  { title: "Зуучийн код", dataIndex: "brokerCode", width: 120 },
-  { title: "Блокийн дугаар", dataIndex: "blockNumber", width: 120 },
-  { title: "Талбайд задарсан", dataIndex: "isUnloadedSite", width: 150 },
-  { title: "Талбайд ирсэн", dataIndex: "isArrivedSite", width: 150 },
-  { title: "Задарсан", dataIndex: "isUnloaded", width: 120 },
-  { title: "Суларсан", dataIndex: "isReleased", width: 120 },
   {
-    title: "Үйлдэл",
-    key: "operation",
-    fixed: "right",
-    width: 180,
-    render: (_: any, record: CapacityData) => (
-      <Space>
-        <Button icon={<EyeOutlined />} onClick={() => handleView(record)} style={{ marginRight: "8px" }} />
-        <Button icon={<EditOutlined />} onClick={() => handleEdit(record)} style={{ marginRight: "8px" }} />
-        <Button icon={<DeleteOutlined />} danger onClick={() => handleDelete(record)} />
-      </Space>
-    ),
+    title: "Чингэлэг ",
+    children: [
+      { title: "Дөхөлт огноо", dataIndex: "arrivalDate", width: 150 },
+      { title: "Орох хил", dataIndex: "arrivalBorder", width: 120 },
+      { title: "Импорт", dataIndex: "isImport", width: 120 },
+      { title: "Чингэлэгийн дугаар", dataIndex: "containerNumber", width: 180 },
+      { title: "Багтаамж", dataIndex: "capacity", width: 120 },
+      { title: "Зуучийн нэр", dataIndex: "brokerName", width: 150 },
+      { title: "Ачилт", dataIndex: "isLoaded", width: 120 },
+      { title: "Борлуулалт", dataIndex: "isSold", width: 120 },
+      { title: "Үнэ", dataIndex: "price", width: 120 },
+    ],
   },
+  {
+    title: "Талбайн бүртгэл",
+    children: [
+      { title: "Зуучийн код", dataIndex: "brokerCode", width: 120 },
+      { title: "Блокийн дугаар", dataIndex: "blockNumber", width: 120 },
+      { title: "Талбайд задарсан", dataIndex: "isUnloadedSite", width: 150 },
+      { title: "Талбайд ирсэн", dataIndex: "isArrivedSite", width: 150 },
+      { title: "Задарсан", dataIndex: "isUnloaded", width: 120 },
+      { title: "Суларсан", dataIndex: "isReleased", width: 120 },
+    ],
+  },
+
+  // {
+  //   title: "Үйлдэл",
+  //   key: "operation",
+  //   fixed: "right",
+  //   width: 91,
+  //   // render: (_: any, record: CapacityData) => (
+  //   //   <div style={{ display: "flex", justifyContent: "center" }}>
+  //   //     <Button
+  //   //       icon={<EyeOutlined />}
+  //   //       onClick={() => handleView(record)}
+  //   //       shape="circle"
+  //   //     />
+  //   //   </div>
+  //   // ),
+  // },
 ];

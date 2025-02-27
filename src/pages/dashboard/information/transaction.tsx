@@ -87,33 +87,33 @@ export const TRANSACTION_COLUMNS = [
     sorter: (a: TransactionData, b: TransactionData) =>
       a.transactionEmployee.localeCompare(b.transactionEmployee),
   },
-  {
-    title: "Үйлдэл",
-    key: "operation",
-    fixed: "right",
-    width: 150,
-    render: (_: any, record: TransactionData) => (
-      <Space>
-        <Button
-          icon={<EyeOutlined />}
-          onClick={() => handleView(record)}
-          style={{
-            marginRight: "8px",
-          }}
-        />
-        <Button
-          icon={<EditOutlined />}
-          onClick={() => handleEdit(record)}
-          style={{
-            marginRight: "8px",
-          }}
-        />
-        <Button
-          icon={<DeleteOutlined />}
-          danger
-          onClick={() => handleDelete(record)}
-        />
-      </Space>
-    ),
-  },
+  // {
+  //   title: "Үйлдэл",
+  //   key: "operation",
+  //   fixed: "right",
+  //   width: 150,
+  //   render: (_: any, record: TransactionData) => (
+  //     <Space>
+  //       <Button
+  //         icon={<EyeOutlined />}
+  //         onClick={() => handleView(record)}
+  //         style={{
+  //           marginRight: "8px",
+  //         }}
+  //       />
+  //       <Button
+  //         icon={<EditOutlined />}
+  //         onClick={() => handleEdit(record)}
+  //         style={{
+  //           marginRight: "8px",
+  //         }}
+  //       />
+  //       <Button
+  //         icon={<DeleteOutlined />}
+  //         danger
+  //         onClick={() => handleDelete(record)}
+  //       />
+  //     </Space>
+  //   ),
+  // },
 ];

@@ -6,8 +6,8 @@ import ProTable, {
 // import { RemoveModal } from "components/modal";
 import React, { useRef, useState } from "react";
 import { ActionComponentProps, RemoveModelConfig } from "../../utils/types";
-import { StopPagination} from "../stop_pagination";
-import { DeleteButton, DetailButton, EditButton} from "../buttons/action";
+import { StopPagination } from "../stop_pagination";
+import { DeleteButton, DetailButton, EditButton } from "../buttons/action";
 import { RemoveModal } from "../modal";
 // import { DeleteButton, DetailButton, EditButton, StopPagination } from "..";
 
@@ -41,8 +41,6 @@ type Props<T> = ProTableProps<T, any, any> & {
   rowKey?: string;
   hideCounter?: boolean;
 };
-
-
 
 export const ITable = <T extends {}>({
   CreateComponent,
@@ -103,7 +101,7 @@ export const ITable = <T extends {}>({
           !hidePagination && {
             className: "px-6 font-semibold text-gray-500 flex items-center",
             pageSize: form?.pageSize,
-            pageSizeOptions: [20, 50, 100, 200, 500, 1000, 1500],
+            pageSizeOptions: [10, 20, 50, 100, 200, 500, 1000, 1500],
             showSizeChanger: true,
             onChange: (page, size) => {
               const current = page - 1;
@@ -267,8 +265,8 @@ export const ITable = <T extends {}>({
           }}
           details={details}
         />
-      )} 
-       {RemoveModelConfig && (
+      )}
+      {RemoveModelConfig && (
         <RemoveModal
           {...RemoveModelConfig.config(remove as any)}
           open={!!remove}
@@ -279,12 +277,12 @@ export const ITable = <T extends {}>({
               pageSize: form?.pageSize || pageData.pageSize,
             });
             setRemove(undefined);
-          }} 
-           onCancel={() => setRemove(undefined)}
+          }}
+          onCancel={() => setRemove(undefined)}
           onRequest={RemoveModelConfig.action}
           remove={true}
         />
       )}
     </>
   );
-}; 
+};
